@@ -1,26 +1,23 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private ObjectPool bulletPool;
 
     private float nextFireTime;
 
     void Update()
     {
-        GetMousePosition();
+        AimAtMouse();
         HandleShootingInput();
     }
 
-    private void GetMousePosition()
+    private void AimAtMouse()
     {
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseWorld - (Vector2)transform.position).normalized;
-
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
@@ -35,8 +32,8 @@ public class PlayerShoot : MonoBehaviour
     }
 
     private void Shoot()
-    {   
-        var b = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Debug.Log("Spawned at: " + firePoint.position);
+    {
+        GameObject bulletObj = bulletPool.Get(firePoint.position, Quaternion.identity);
+        bulletObj.GetComponent<Bullet>().Init(bulletPool, transform.right);
     }
 }

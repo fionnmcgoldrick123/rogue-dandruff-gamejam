@@ -2,18 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Coin
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Bullet
   - 
   - 
   - 
@@ -41,3 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 1920473857
+    locked: 0
+  - name: Enemy
+    uniqueID: 4014645241
+    locked: 0
+  - name: Bullet
+    uniqueID: 3895832197
+    locked: 0
+  - name: Coin
+    uniqueID: 2396942645
+    locked: 0
+  m_RenderingLayers:
+  - Default

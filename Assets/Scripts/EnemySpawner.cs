@@ -3,19 +3,20 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawning Settings")]
-    public GameObject[] enemyPrefabs; 
-    public float spawnInterval = 1f;            
-    public float spawnDistance = 12f;           
-    public float spawnRadiusVariation = 2f;     
+    public float spawnInterval = 1f;
+    public float spawnDistance = 12f;
+    public float spawnRadiusVariation = 2f;
+
+    [Header("Pools")]
+    [SerializeField] private ObjectPool enemyPool;
+    [SerializeField] private ObjectPool coinPool;
 
     private Transform player;
-    private Camera mainCam;
     private float spawnTimer;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        mainCam = Camera.main;
     }
 
     void Update()
@@ -31,18 +32,14 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        if (enemyPrefabs.Length == 0) return;
-
-        GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
         float angle = Random.Range(0f, 360f);
         Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-
         float distance = spawnDistance + Random.Range(-spawnRadiusVariation, spawnRadiusVariation);
 
         Vector3 spawnPosition = player.position + (Vector3)(direction * distance);
         spawnPosition.z = 0f;
 
-        Instantiate(prefab, spawnPosition, Quaternion.identity);
+        GameObject enemy = enemyPool.Get(spawnPosition, Quaternion.identity);
+        enemy.GetComponent<Enemy>().Init(enemyPool, coinPool);
     }
 }

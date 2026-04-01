@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8865469066461177674}
   - component: {fileID: 1061793018609157366}
   - component: {fileID: 5425090308051627888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,6 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   health: 3
+  coinCount: 5
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
 --- !u!61 &1061793018609157366
 BoxCollider2D:
   m_ObjectHideFlags: 0
