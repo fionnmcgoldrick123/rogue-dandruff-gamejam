@@ -13,13 +13,18 @@ public class Hair : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+
         if (playerInside)
-            BeginCutting();
+            Cutting();
+        else
+            NotCutting();
+
     }
 
-    private void BeginCutting()
+    private void Cutting()
     {
+        Debug.Log("Cutting hair... Charge Time: " + chargeTime);
         chargeTime += Time.deltaTime;
 
         if (chargeTime >= cutTime)
@@ -27,6 +32,14 @@ public class Hair : MonoBehaviour
             Debug.Log("Hair Cut!");
             chargeTime = 0f;
         }
+    }
+
+    private void NotCutting()
+    {
+        Debug.Log("Not cutting hair... Charge Time: " + chargeTime);
+        chargeTime -= Time.deltaTime;
+        if (chargeTime < 0f)
+            chargeTime = 0f;
     }
 
 }
