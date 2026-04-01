@@ -1,7 +1,15 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+
+    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+
+    private float nextFireTime;
+
     void Update()
     {
         GetMousePosition();
@@ -19,9 +27,16 @@ public class PlayerShoot : MonoBehaviour
 
     private void HandleShootingInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
-            Debug.Log("Shoot!");
+            Shoot();
+            nextFireTime = Time.time + fireRate;
         }
+    }
+
+    private void Shoot()
+    {   
+        var b = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("Spawned at: " + firePoint.position);
     }
 }
