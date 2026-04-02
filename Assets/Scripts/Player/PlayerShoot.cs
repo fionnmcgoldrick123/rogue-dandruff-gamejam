@@ -4,22 +4,34 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform gunTransform;
     [SerializeField] private ObjectPool bulletPool;
 
     private float nextFireTime;
 
+    void Start()
+    {
+        // If gunTransform not assigned, use firePoint's parent
+        if (gunTransform == null && firePoint != null)
+        {
+            gunTransform = firePoint.parent;
+        }
+    }
+
     void Update()
     {
-        AimAtMouse();
+        AimGunAtMouse();
         HandleShootingInput();
     }
 
-    private void AimAtMouse()
+    private void AimGunAtMouse()
     {
+        if (gunTransform == null) return;
+
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseWorld - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        gunTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void HandleShootingInput()
@@ -34,6 +46,6 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         GameObject bulletObj = bulletPool.Get(firePoint.position, Quaternion.identity);
-        bulletObj.GetComponent<Bullet>().Init(bulletPool, transform.right);
+        bulletObj.GetComponent<Bullet>().Init(bulletPool, gunTransform.right);
     }
 }
