@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 0febde2923ae9b74bbbeadff9a98c8e5
+guid: e8a9b82497f08884aa200ddc51d78368
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 297761703447499198
-    second: enemy_0
+      213: -1682828200159774351
+    second: rogue-move_0
   - first:
-      213: 3680619090928529440
-    second: enemy_1
+      213: 988259918775329054
+    second: rogue-move_1
   - first:
-      213: -6810697999950630716
-    second: enemy_2
+      213: -8429348756889411845
+    second: rogue-move_2
+  - first:
+      213: 8132116817160996733
+    second: rogue-move_3
+  - first:
+      213: 7387077609534305447
+    second: rogue-move_4
+  - first:
+      213: 7493026911947267445
+    second: rogue-move_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -145,89 +154,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy_0
+      name: rogue-move_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 22
+        width: 23
+        height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb114b111bcd12400800000000000000
-      internalID: 297761703447499198
+      spriteID: 179777ffaa465a8e0800000000000000
+      internalID: -1682828200159774351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_1
+      name: rogue-move_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 23
         y: 0
-        width: 16
-        height: 22
+        width: 23
+        height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 020f05cff8f241330800000000000000
-      internalID: 3680619090928529440
+      spriteID: e112c5cf82107bd00800000000000000
+      internalID: 988259918775329054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_2
+      name: rogue-move_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 46
         y: 0
-        width: 16
-        height: 22
+        width: 23
+        height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c0ba70f04a8b71a0800000000000000
-      internalID: -6810697999950630716
+      spriteID: bfed9b957ffe40b80800000000000000
+      internalID: -8429348756889411845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy_3
+      name: rogue-move_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 69
         y: 0
-        width: 16
-        height: 22
+        width: 23
+        height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0ad0db718e46a004db9dc5c8bb281e50
-      internalID: 1698463658
+      spriteID: d778cdec8251bd070800000000000000
+      internalID: 8132116817160996733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue-move_4
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 23
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a4b88c82fb248660800000000000000
+      internalID: 7387077609534305447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rogue-move_5
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 23
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d1f03d6449cf760800000000000000
+      internalID: 7493026911947267445
       vertices: []
       indices: 
       edges: []
@@ -236,7 +289,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4ee2b4b8703f95b40be6c8c7b1a4781c
+    spriteID: 3c63037ad8652994296d9357a0afdb9f
     internalID: 0
     vertices: []
     indices: 
@@ -246,10 +299,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      enemy_0: 297761703447499198
-      enemy_1: 3680619090928529440
-      enemy_2: -6810697999950630716
-      enemy_3: 1698463658
+      rogue-move_0: -1682828200159774351
+      rogue-move_1: 988259918775329054
+      rogue-move_2: -8429348756889411845
+      rogue-move_3: 8132116817160996733
+      rogue-move_4: 7387077609534305447
+      rogue-move_5: 7493026911947267445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
