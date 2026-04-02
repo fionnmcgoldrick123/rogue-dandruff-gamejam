@@ -31,7 +31,18 @@ public class PlayerShoot : MonoBehaviour
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseWorld - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gunTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        
+        // Check if mouse is on left side of player
+        if (mouseWorld.x < transform.position.x)
+        {
+            // Rotate 180 degrees on X axis when aiming left
+            gunTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward) * Quaternion.AngleAxis(180f, Vector3.right);
+        }
+        else
+        {
+            // Normal rotation when aiming right
+            gunTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void HandleShootingInput()
