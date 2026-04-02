@@ -6,15 +6,21 @@ public class Coin : MonoBehaviour
     [SerializeField] private float deceleration = 8f;
     [SerializeField] private float magnetSpeed = 12f;
     [SerializeField] private float pickupDistance = 0.3f;
+    [SerializeField] private float interactableCooldown = 0.5f;
     [SerializeField] private int value = 1;
 
     private Vector2 velocity;
     private ObjectPool pool;
     private Transform player;
     private bool beingCollected;
+    private bool canBeCollected;
 
     public void Launch(Vector2 direction, ObjectPool pool)
     {
+        CancelInvoke(nameof(EnableInteraction));
+        canBeCollected = false;
+        Invoke(nameof(EnableInteraction), interactableCooldown);
+
         this.pool = pool;
         velocity = direction.normalized * launchSpeed;
         beingCollected = false;
@@ -50,9 +56,15 @@ public class Coin : MonoBehaviour
         }
     }
 
+    private void EnableInteraction()
+    {
+        canBeCollected = true;
+    }
+
     public void StartCollecting()
     {
-        beingCollected = true;
+        if (canBeCollected)
+            beingCollected = true;
     }
 
     private void Pickup()

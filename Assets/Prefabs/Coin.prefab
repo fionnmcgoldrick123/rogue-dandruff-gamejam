@@ -50,6 +50,7 @@ MonoBehaviour:
   deceleration: 8
   magnetSpeed: 12
   pickupDistance: 0.3
+  interactableCooldown: 0.5
   value: 1
 --- !u!212 &1437235450519140217
 SpriteRenderer:
