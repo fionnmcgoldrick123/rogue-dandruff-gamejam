@@ -39,9 +39,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Check for Enemy first (handles damage and coins)
         if (other.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(damage, direction);
+            ReturnToPool();
+        }
+        // Check for any IHittable object
+        else if (other.TryGetComponent(out IHittable hittable))
+        {
+            hittable.OnHit();
             ReturnToPool();
         }
     }

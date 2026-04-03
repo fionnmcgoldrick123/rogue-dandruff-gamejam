@@ -39332,9 +39332,9 @@ GameObject:
   - component: {fileID: 1455885246}
   - component: {fileID: 1455885249}
   - component: {fileID: 1455885248}
+  - component: {fileID: 1455885253}
   - component: {fileID: 1455885245}
   - component: {fileID: 1455885252}
-  - component: {fileID: 1455885253}
   m_Layer: 0
   m_Name: HairFollicle
   m_TagString: Untagged

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HitFlash : MonoBehaviour
+public class HitFlash : MonoBehaviour, IHittable
 {
     [Header("Material Settings")]
     [SerializeField] private Material whiteMaterial;
@@ -30,9 +30,9 @@ public class HitFlash : MonoBehaviour
     }
 
     /// <summary>
-    /// Trigger the hit flash effect (white material + scale)
+    /// Called when this object is hit by a bullet (IHittable interface)
     /// </summary>
-    public void TriggerHit()
+    public void OnHit()
     {
         // Apply white material
         if (whiteMaterial != null)

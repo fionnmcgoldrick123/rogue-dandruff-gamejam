@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHittable
 {
     [Header("Enemy Settings")]
     public float moveSpeed = 2f;
@@ -53,14 +53,17 @@ public class Enemy : MonoBehaviour
         TakeDamage(damage, Vector2.zero);
     }
 
+    public void OnHit()
+    {
+        // Trigger hit flash effect via IHittable
+        if (hitFlash != null)
+            hitFlash.OnHit();
+    }
+
     public void TakeDamage(float damage, Vector2 hitDirection)
     {
         health -= damage;
-        
-        // Trigger hit flash effect
-        if (hitFlash != null)
-            hitFlash.TriggerHit();
-        
+        OnHit();
         if (health <= 0f)
             Die(hitDirection);
     }

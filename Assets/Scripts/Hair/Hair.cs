@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hair : MonoBehaviour
+public class Hair : MonoBehaviour, IHittable
 {
     [Header("Hair Settings")]
     [SerializeField] private float cutTime;
@@ -42,4 +42,11 @@ public class Hair : MonoBehaviour
             chargeTime = 0f;
     }
 
+    public void OnHit()
+    {
+        // trigger hit flash effect via IHittable
+        HitFlash hitFlash = GetComponent<HitFlash>();
+        if (hitFlash != null)
+            hitFlash.OnHit();
+    }
 }
