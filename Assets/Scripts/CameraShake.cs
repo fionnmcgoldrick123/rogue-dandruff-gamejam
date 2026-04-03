@@ -1,32 +1,33 @@
 using System.Collections;
 using UnityEngine;
 
-public class Crosshair : MonoBehaviour
+public class CameraShake : MonoBehaviour
 {
-    private RectTransform rectTransform;
-    private Vector3 originalPosition;
-    private Coroutine shakeRoutine;
+    public static CameraShake Instance { get; private set; }
     
     [Header("Shake Settings")]
-    [SerializeField] private float shakeMagnitude = 10f;
+    [SerializeField] private float shakeMagnitude = 0.5f;
     [SerializeField] private float shakeDuration = 0.1f;
-
-    void Start()
-    {
-        Cursor.visible = false;
-        rectTransform = GetComponent<RectTransform>();
-        originalPosition = rectTransform.position;
-    }
-
-    void Update()
-    {
-        originalPosition = Input.mousePosition;
-        if (shakeRoutine == null)  // Only update position if not shaking
-        {
-            rectTransform.position = originalPosition;
-        }
-    }
     
+    private Coroutine shakeRoutine;
+    private Vector3 shakeOffset = Vector3.zero;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void LateUpdate()
+    {
+        // Apply shake offset after all position updates
+        transform.position += shakeOffset;
+    }
+
     public void Shake()
     {
         if (shakeRoutine != null)
@@ -55,13 +56,13 @@ public class Crosshair : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
             
-            rectTransform.position = originalPosition + new Vector3(x, y, 0f);
+            shakeOffset = new Vector3(x, y, 0f);
             elapsed += Time.deltaTime;
             
             yield return null;
         }
         
-        rectTransform.position = originalPosition;
+        shakeOffset = Vector3.zero;
         shakeRoutine = null;
     }
 }

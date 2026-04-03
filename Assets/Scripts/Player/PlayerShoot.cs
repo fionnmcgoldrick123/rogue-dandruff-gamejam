@@ -65,5 +65,22 @@ public class PlayerShoot : MonoBehaviour
         {
             muzzleFlash.PlayMuzzleFlash();
         }
+        
+        // Trigger camera shake
+        if (CameraShake.Instance != null)
+        {
+            CameraShake.Instance.Shake();
+        }
+        
+        // Trigger crosshair shake
+        Canvas crosshairCanvas = FindObjectOfType<Canvas>();
+        if (crosshairCanvas != null)
+        {
+            Crosshair crosshair = crosshairCanvas.GetComponentInChildren<Crosshair>();
+            if (crosshair != null)
+            {
+                crosshair.Shake();
+            }
+        }
     }
 }
