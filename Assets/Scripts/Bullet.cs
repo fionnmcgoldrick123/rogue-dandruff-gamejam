@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         this.pool = pool;
         this.direction = direction.normalized;
         timer = lifespan;
-        float angle = Mathf.Atan2(this.direction.y, this.direction.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(this.direction.y, this.direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
