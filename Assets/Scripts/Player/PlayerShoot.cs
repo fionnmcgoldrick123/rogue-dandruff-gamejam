@@ -73,7 +73,7 @@ public class PlayerShoot : MonoBehaviour
         }
         
         // Trigger crosshair shake
-        Canvas crosshairCanvas = FindObjectOfType<Canvas>();
+        Canvas crosshairCanvas = GetComponentInParent<Canvas>();
         if (crosshairCanvas != null)
         {
             Crosshair crosshair = crosshairCanvas.GetComponentInChildren<Crosshair>();
