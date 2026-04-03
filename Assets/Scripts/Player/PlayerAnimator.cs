@@ -35,5 +35,22 @@ public class PlayerAnimator : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+        
+        // Check for moonwalking: moving opposite direction from facing
+        bool isMoonwalking = false;
+        if (rb.linearVelocity.x != 0)
+        {
+            // Moving right but facing left (flipX = true)
+            if (rb.linearVelocity.x > 0 && spriteRenderer.flipX)
+            {
+                isMoonwalking = true;
+            }
+            // Moving left but facing right (flipX = false)
+            else if (rb.linearVelocity.x < 0 && !spriteRenderer.flipX)
+            {
+                isMoonwalking = true;
+            }
+        }
+        animator.SetBool("IsMoonWalking", isMoonwalking);
     }
 }

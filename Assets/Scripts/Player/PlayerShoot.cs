@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform gunTransform;
     [SerializeField] private ObjectPool bulletPool;
+    [SerializeField] private MuzzleFlash muzzleFlash;
 
     private float nextFireTime;
 
@@ -31,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseWorld - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        
+
         // Check if mouse is on left side of player
         if (mouseWorld.x < transform.position.x)
         {
@@ -58,5 +59,11 @@ public class PlayerShoot : MonoBehaviour
     {
         GameObject bulletObj = bulletPool.Get(firePoint.position, Quaternion.identity);
         bulletObj.GetComponent<Bullet>().Init(bulletPool, gunTransform.right);
+
+        // Trigger muzzle flash animation
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.PlayMuzzleFlash();
+        }
     }
 }
