@@ -74,7 +74,10 @@ public class Enemy : MonoBehaviour
     {
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashRoutine());
+        
+        // Only start coroutine if GameObject is active (fixes pooling bug)
+        if (gameObject.activeSelf)
+            flashRoutine = StartCoroutine(FlashRoutine());
     }
 
     private IEnumerator FlashRoutine()
