@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: b862d9122240369489c7d2cba5db948d
+guid: e7c007f070ceefa41b895227e9c4cc54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7591463974754732465
-    second: smg_0
+      213: 6245046233476944347
+    second: crosshair-export_0
   - first:
-      213: 4471373440639314564
-    second: smg_1
+      213: -3848870313612462157
+    second: crosshair-export_1
   - first:
-      213: -7235487295256191428
-    second: smg_2
+      213: 633973476046036549
+    second: crosshair-export_2
   - first:
-      213: -1837107648870645986
-    second: smg_3
+      213: 8181599169947547851
+    second: crosshair-export_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,12 +55,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.11447627, y: 0.55262893}
-  spritePixelsToUnits: 32
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,89 +148,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: smg_0
+      name: crosshair-export_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 33
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11857325, y: 0.5553279}
+        x: 1
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b94e64834c4a5960800000000000000
-      internalID: 7591463974754732465
+      spriteID: bd1d840367cdaa650800000000000000
+      internalID: 6245046233476944347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smg_1
+      name: crosshair-export_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 39
-        height: 14
-      alignment: 9
-      pivot: {x: 0.12263586, y: 0.548412}
+        x: 1
+        y: 1
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48a2c6334728d0e30800000000000000
-      internalID: 4471373440639314564
+      spriteID: 3b7359a87d0169ac0800000000000000
+      internalID: -3848870313612462157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smg_2
+      name: crosshair-export_2
       rect:
         serializedVersion: 2
-        x: 81
-        y: 0
-        width: 41
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11978968, y: 0.5553279}
+        x: 8
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3e1765e3a2669b90800000000000000
-      internalID: -7235487295256191428
+      spriteID: 54e5ebc74835cc800800000000000000
+      internalID: 633973476046036549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smg_3
+      name: crosshair-export_3
       rect:
         serializedVersion: 2
-        x: 122
-        y: 0
-        width: 42
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11501058, y: 0.548412}
+        x: 8
+        y: 1
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1f79e6a3584186e0800000000000000
-      internalID: -1837107648870645986
+      spriteID: bc8ba5bd811ea8170800000000000000
+      internalID: 8181599169947547851
       vertices: []
       indices: 
       edges: []
@@ -239,8 +239,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 049fbff9cdafe00428375f2a1a8ed078
-    internalID: 2098084407
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -248,11 +248,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      smg_0: 7591463974754732465
-      smg_1: 4471373440639314564
-      smg_2: -7235487295256191428
-      smg_3: -1837107648870645986
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

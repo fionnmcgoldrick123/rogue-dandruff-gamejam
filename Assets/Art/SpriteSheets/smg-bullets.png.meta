@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f67092789607b6b4491dc0ae6af82c81
+guid: c89dff4a23eebfe4f90f602dc264e7e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1164422810354053251
-    second: rogue-idle_0
+      213: -3273834066814240568
+    second: smg-bullets_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,265 +139,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rogue-idle_0
+      name: smg-bullets_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 380f38b606cd82010800000000000000
-      internalID: 1164422810354053251
+      spriteID: 8c8f6f103410192d0800000000000000
+      internalID: -3273834066814240568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_1
+      name: smg-bullets_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 12
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fc9f8ac0c12d884fa0c64ae2a471179
-      internalID: -1903090081
+      spriteID: 8d6b2ce7ea0effc4fa28c233b3f8fff5
+      internalID: -974843002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_2
+      name: smg-bullets_2
       rect:
         serializedVersion: 2
-        x: 46
+        x: 24
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80d9b504921a7c646bcb98a55c6d027d
-      internalID: -1276690423
+      spriteID: d310acdc7ae52a04ab3c9787431d589b
+      internalID: -541308200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_3
+      name: smg-bullets_3
       rect:
         serializedVersion: 2
-        x: 69
+        x: 36
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7da92735aa486b34892f3392ac118731
-      internalID: -1529775087
+      spriteID: 414a77a12d275ad4384ce536d776bde3
+      internalID: 751868740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_4
+      name: smg-bullets_4
       rect:
         serializedVersion: 2
-        x: 92
+        x: 48
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 848679961d1005c41a966ec3b84dfb10
-      internalID: 1259682903
+      spriteID: d31d7801a6d151549a4bb96697cd3a12
+      internalID: -995266273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_5
+      name: smg-bullets_5
       rect:
         serializedVersion: 2
-        x: 115
+        x: 60
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65c9f8659d599dd4c8ebef0207d198d3
-      internalID: 803850312
+      spriteID: ff593b8be7365114e9be5edaef59bf57
+      internalID: 468386357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_6
+      name: smg-bullets_6
       rect:
         serializedVersion: 2
-        x: 138
+        x: 72
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a73171effa4cc4c9cf3589b7007d49
-      internalID: 615443354
+      spriteID: 40201611295f46c41b2d15c2b6d0b4ae
+      internalID: -939076424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rogue-idle_7
+      name: smg-bullets_7
       rect:
         serializedVersion: 2
-        x: 161
+        x: 84
         y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 12
+        height: 3
+      alignment: 9
+      pivot: {x: 12, y: 3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d254e647dae4b35499e77f80e03016f7
-      internalID: -1725734969
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue-idle_8
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8fbed9feabeed44fb7c3ebbf4d33a42
-      internalID: -227357778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue-idle_9
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f87d9904fab28942b1f0e3e19b14110
-      internalID: -686903710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue-idle_10
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50a490eac5840044ebe9152bdd89eaed
-      internalID: -211742919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rogue-idle_11
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 0
-        width: 23
-        height: 59
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad70e63b0f952fe4ab5485268661e737
-      internalID: -1746117257
+      spriteID: 57d2f310119b9da439b255df3dca1ede
+      internalID: 1751599748
       vertices: []
       indices: 
       edges: []
@@ -406,7 +318,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2f50c05457dcf774290e2c08aee7470f
+    spriteID: d85c779f911f3e84bad371e8550540c8
     internalID: 0
     vertices: []
     indices: 
@@ -416,18 +328,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rogue-idle_0: 1164422810354053251
-      rogue-idle_1: -1903090081
-      rogue-idle_10: -211742919
-      rogue-idle_11: -1746117257
-      rogue-idle_2: -1276690423
-      rogue-idle_3: -1529775087
-      rogue-idle_4: 1259682903
-      rogue-idle_5: 803850312
-      rogue-idle_6: 615443354
-      rogue-idle_7: -1725734969
-      rogue-idle_8: -227357778
-      rogue-idle_9: -686903710
+      smg-bullets_0: -3273834066814240568
+      smg-bullets_1: -974843002
+      smg-bullets_2: -541308200
+      smg-bullets_3: 751868740
+      smg-bullets_4: -995266273
+      smg-bullets_5: 468386357
+      smg-bullets_6: -939076424
+      smg-bullets_7: 1751599748
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

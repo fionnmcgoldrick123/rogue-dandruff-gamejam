@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: b862d9122240369489c7d2cba5db948d
+guid: 19d82bfd449b11249ac826dbf5ce434e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7591463974754732465
-    second: smg_0
-  - first:
-      213: 4471373440639314564
-    second: smg_1
-  - first:
-      213: -7235487295256191428
-    second: smg_2
-  - first:
-      213: -1837107648870645986
-    second: smg_3
+      213: -7020015966039603788
+    second: rogue-tileset_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.11447627, y: 0.55262893}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -148,89 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: smg_0
+      name: rogue-tileset_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 33
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11857325, y: 0.5553279}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b94e64834c4a5960800000000000000
-      internalID: 7591463974754732465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smg_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 39
-        height: 14
-      alignment: 9
-      pivot: {x: 0.12263586, y: 0.548412}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 48a2c6334728d0e30800000000000000
-      internalID: 4471373440639314564
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smg_2
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 0
-        width: 41
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11978968, y: 0.5553279}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c3e1765e3a2669b90800000000000000
-      internalID: -7235487295256191428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smg_3
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 0
-        width: 42
-        height: 14
-      alignment: 9
-      pivot: {x: 0.11501058, y: 0.548412}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1f79e6a3584186e0800000000000000
-      internalID: -1837107648870645986
+      spriteID: 4b583aa2ca4e39e90800000000000000
+      internalID: -7020015966039603788
       vertices: []
       indices: 
       edges: []
@@ -239,8 +164,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 049fbff9cdafe00428375f2a1a8ed078
-    internalID: 2098084407
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -249,10 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      smg_0: 7591463974754732465
-      smg_1: 4471373440639314564
-      smg_2: -7235487295256191428
-      smg_3: -1837107648870645986
+      rogue-tileset_0: -7020015966039603788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

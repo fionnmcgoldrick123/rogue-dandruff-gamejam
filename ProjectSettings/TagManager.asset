@@ -38,20 +38,26 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: TileMap
+    uniqueID: 1137622011
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 1920473857
+  - name: Shadows
+    uniqueID: 3344385005
     locked: 0
-  - name: Enemy
-    uniqueID: 4014645241
+  - name: Coin
+    uniqueID: 2396942645
     locked: 0
   - name: Bullet
     uniqueID: 3895832197
     locked: 0
-  - name: Coin
-    uniqueID: 2396942645
+  - name: Enemy
+    uniqueID: 4014645241
+    locked: 0
+  - name: Player
+    uniqueID: 1920473857
     locked: 0
   m_RenderingLayers:
   - Default
