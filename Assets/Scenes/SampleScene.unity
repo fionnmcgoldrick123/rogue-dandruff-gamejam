@@ -39333,7 +39333,8 @@ GameObject:
   - component: {fileID: 1455885249}
   - component: {fileID: 1455885248}
   - component: {fileID: 1455885245}
-  - component: {fileID: 1455885250}
+  - component: {fileID: 1455885252}
+  - component: {fileID: 1455885253}
   m_Layer: 0
   m_Name: HairFollicle
   m_TagString: Untagged
@@ -39364,7 +39365,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39385,8 +39386,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6226415, g: 0.5046088, b: 0.32306868, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e42d639929d988e499b82d52804a0b2c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -39436,8 +39437,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutTime: 5
---- !u!58 &1455885250
-CircleCollider2D:
+--- !u!61 &1455885252
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -39471,7 +39472,33 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.13
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 1.84375}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 1.84375}
+  m_EdgeRadius: 0
+--- !u!114 &1455885253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455885244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4067f823b1982854db13b02f4bc62ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMaterial: {fileID: 2100000, guid: 4d1f6a6927626cf4788a649c5c97ce96, type: 2}
+  scaleMultiplier: 1.1
+  scaleDuration: 0.1
+  materialDuration: 0.1
 --- !u!1 &1551467621
 GameObject:
   m_ObjectHideFlags: 0

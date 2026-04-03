@@ -8,22 +8,15 @@ public class Enemy : MonoBehaviour
     public float health = 3f;
     [SerializeField] private int coinCount = 5;
 
-    [Header("Flash Settings")]
-    [SerializeField] private Color flashColor = Color.white;
-    [SerializeField] private float flashDuration = 0.1f;
-
     private float maxHealth;
     private Transform player;
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
     private ObjectPool enemyPool;
     private ObjectPool coinPool;
-    private Coroutine flashRoutine;
+    private HitFlash hitFlash;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        hitFlash = GetComponent<HitFlash>();
         maxHealth = health;
     }
 
@@ -41,8 +34,6 @@ public class Enemy : MonoBehaviour
         this.enemyPool = enemyPool;
         this.coinPool = coinPool;
         health = maxHealth;
-        flashRoutine = null;
-        spriteRenderer.color = originalColor;
     }
 
     private void Update()
@@ -65,35 +56,18 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage, Vector2 hitDirection)
     {
         health -= damage;
-        Flash();
+        
+        // Trigger hit flash effect
+        if (hitFlash != null)
+            hitFlash.TriggerHit();
+        
         if (health <= 0f)
             Die(hitDirection);
-    }
-
-    private void Flash()
-    {
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        
-        // Only start coroutine if GameObject is active (fixes pooling bug)
-        if (gameObject.activeSelf)
-            flashRoutine = StartCoroutine(FlashRoutine());
-    }
-
-    private IEnumerator FlashRoutine()
-    {
-        spriteRenderer.color = flashColor;
-        yield return new WaitForSeconds(flashDuration);
-        spriteRenderer.color = originalColor;
-        flashRoutine = null;
     }
 
     private void Die(Vector2 hitDirection)
     {
         SpawnCoins(hitDirection);
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        spriteRenderer.color = originalColor;
         enemyPool.Return(gameObject);
     }
 

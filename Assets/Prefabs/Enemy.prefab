@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 6959318112819575508}
   - component: {fileID: 4145514677849858869}
   - component: {fileID: 8865469066461177674}
+  - component: {fileID: -5319605941076374789}
   - component: {fileID: 1061793018609157366}
   - component: {fileID: 5425090308051627888}
   - component: {fileID: 9101655251927355965}
@@ -193,10 +194,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  health: 20
+  health: 10000
   coinCount: 5
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.1
+--- !u!114 &-5319605941076374789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343304286696368574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4067f823b1982854db13b02f4bc62ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMaterial: {fileID: 2100000, guid: 4d1f6a6927626cf4788a649c5c97ce96, type: 2}
+  scaleMultiplier: 1.1
+  scaleDuration: 0.1
+  materialDuration: 0.1
 --- !u!61 &1061793018609157366
 BoxCollider2D:
   m_ObjectHideFlags: 0
