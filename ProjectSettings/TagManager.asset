@@ -59,5 +59,8 @@ TagManager:
   - name: Player
     uniqueID: 1920473857
     locked: 0
+  - name: HitMarker
+    uniqueID: 4273338777
+    locked: 0
   m_RenderingLayers:
   - Default

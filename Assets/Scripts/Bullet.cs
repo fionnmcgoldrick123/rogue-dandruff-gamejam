@@ -10,10 +10,12 @@ public class Bullet : MonoBehaviour
     private Vector2 direction;
     private float timer;
     private ObjectPool pool;
+    private HitMarkerManager hitMarkerManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        hitMarkerManager = FindFirstObjectByType<HitMarkerManager>();
     }
 
     public void Init(ObjectPool pool, Vector2 direction)
@@ -39,24 +41,35 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Vector3 hitPosition = other.ClosestPoint(transform.position);
+
         // Check for Enemy first (handles damage and coins)
         if (other.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(damage, direction);
+            SpawnHitMarker(hitPosition);
             ReturnToPool();
         }
         // Check for Hair (handles damage and coin spawn in circle)
         else if (other.TryGetComponent(out Hair hair))
         {
             hair.TakeDamage(damage);
+            SpawnHitMarker(hitPosition);
             ReturnToPool();
         }
         // Check for any IHittable object
         else if (other.TryGetComponent(out IHittable hittable))
         {
             hittable.OnHit();
+            SpawnHitMarker(hitPosition);
             ReturnToPool();
         }
+    }
+
+    private void SpawnHitMarker(Vector3 position)
+    {
+        if (hitMarkerManager != null)
+            hitMarkerManager.SpawnHitMarker(position);
     }
 
     private void ReturnToPool()
