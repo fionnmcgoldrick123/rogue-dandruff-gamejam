@@ -45,6 +45,12 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(damage, direction);
             ReturnToPool();
         }
+        // Check for Hair (handles damage and coin spawn in circle)
+        else if (other.TryGetComponent(out Hair hair))
+        {
+            hair.TakeDamage(damage);
+            ReturnToPool();
+        }
         // Check for any IHittable object
         else if (other.TryGetComponent(out IHittable hittable))
         {
