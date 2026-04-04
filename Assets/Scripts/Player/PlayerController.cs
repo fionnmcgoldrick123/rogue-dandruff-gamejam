@@ -3,7 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TopDownMovement : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Stats")]
+    [SerializeField] private PlayerStats stats;
+
+    [Header("Movement Fallback")]
     public float moveSpeed = 5f;
     public float acceleration = 50f;
     public float deceleration = 50f;
@@ -17,6 +20,13 @@ public class TopDownMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
+
+        if (stats != null)
+        {
+            moveSpeed = stats.moveSpeed;
+            acceleration = stats.acceleration;
+            deceleration = stats.deceleration;
+        }
     }
 
     void Update()

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private PlayerStats stats;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform gunTransform;
     [SerializeField] private ObjectPool bulletPool;
@@ -48,6 +48,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void HandleShootingInput()
     {
+        float fireRate = stats != null ? stats.fireRate : 0.5f;
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
         {
             Shoot();
@@ -58,7 +59,7 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         GameObject bulletObj = bulletPool.Get(firePoint.position, Quaternion.identity);
-        bulletObj.GetComponent<Bullet>().Init(bulletPool, gunTransform.right);
+        bulletObj.GetComponent<Bullet>().Init(bulletPool, gunTransform.right, stats);
 
         // Trigger muzzle flash animation
         if (muzzleFlash != null)
