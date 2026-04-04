@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Pools")]
     [SerializeField] private ObjectPool enemyPool;
-    [SerializeField] private ObjectPool coinPool;
+    [SerializeField] private ObjectPool expOrbPool;
 
     private Transform player;
     private float spawnTimer;
@@ -40,6 +40,6 @@ public class EnemySpawner : MonoBehaviour
         spawnPosition.z = 0f;
 
         GameObject enemy = enemyPool.Get(spawnPosition, Quaternion.identity);
-        enemy.GetComponent<Enemy>().Init(enemyPool, coinPool);
+        enemy.GetComponent<Enemy>().Init(enemyPool, expOrbPool);
     }
 }

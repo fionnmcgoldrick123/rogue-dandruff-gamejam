@@ -7,8 +7,8 @@ public class Hair : MonoBehaviour, IHittable
 
     [Header("Health Settings")]
     [SerializeField] private float health = 3f;
-    [SerializeField] private int coinCount = 5;
-    [SerializeField] private ObjectPool coinPool;
+    [SerializeField] private int expOrbCount = 5;
+    [SerializeField] private ObjectPool expOrbPool;
 
     private float maxHealth;
     private float chargeTime;
@@ -71,27 +71,26 @@ public class Hair : MonoBehaviour, IHittable
 
     private void Die()
     {
-        SpawnCoins();
+        SpawnExpOrbs();
         gameObject.SetActive(false);
     }
 
-    private void SpawnCoins()
+    private void SpawnExpOrbs()
     {
-        if (coinPool == null)
+        if (expOrbPool == null)
         {
-            Debug.LogWarning("Coin pool not assigned to Hair!");
+            Debug.LogWarning("ExpOrb pool not assigned to Hair!");
             return;
         }
 
-        for (int i = 0; i < coinCount; i++)
+        for (int i = 0; i < expOrbCount; i++)
         {
-            // Spawn coins in a circle around the hair's center
-            float angle = (360f / coinCount) * i;
+            float angle = (360f / expOrbCount) * i;
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-            GameObject coinObj = coinPool.Get(transform.position, Quaternion.identity);
-            Coin coin = coinObj.GetComponent<Coin>();
-            coin.Launch(direction, coinPool);
+            GameObject orbObj = expOrbPool.Get(transform.position, Quaternion.identity);
+            ExpOrb orb = orbObj.GetComponent<ExpOrb>();
+            orb.Launch(direction, expOrbPool);
         }
     }
 }

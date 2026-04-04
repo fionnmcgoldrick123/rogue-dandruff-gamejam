@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnetRadius: 3
-  coinLayer:
+  expOrbLayer:
     serializedVersion: 2
     m_Bits: 8
 --- !u!114 &310165584
@@ -38405,6 +38405,51 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &539126635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539126637}
+  - component: {fileID: 539126636}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &539126636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539126635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652887e891e6efa45b1b00e7890c503d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseExpPerLevel: 100
+--- !u!4 &539126637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539126635}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &564271102
 GameObject:
   m_ObjectHideFlags: 0
@@ -39003,6 +39048,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902030248}
   m_CullTransparentMesh: 1
+--- !u!1 &919623753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919623755}
+  - component: {fileID: 919623754}
+  m_Layer: 0
+  m_Name: LevelUpUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &919623754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919623753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789111afc6738a24aaef7a0394a6059a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 914bbf281ab72f842872960cc487ed7d, type: 2}
+  allUpgrades: []
+  levelUpPanel: {fileID: 1817495271}
+  topUIPanel: {fileID: 0}
+  cards: []
+--- !u!4 &919623755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919623753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1011555903
 GameObject:
   m_ObjectHideFlags: 0
@@ -39668,8 +39762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutTime: 5
   health: 100
-  coinCount: 20
-  coinPool: {fileID: 1802821914}
+  expOrbCount: 5
+  expOrbPool: {fileID: 1802821914}
 --- !u!61 &1455885252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39793,6 +39887,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 310165578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1630004767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630004769}
+  - component: {fileID: 1630004768}
+  m_Layer: 0
+  m_Name: GameStateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1630004768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630004767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c12ffbded298aa42a01a861d24c0d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1630004769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630004767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716253321
 GameObject:
@@ -39926,7 +40064,7 @@ GameObject:
   - component: {fileID: 1802821915}
   - component: {fileID: 1802821914}
   m_Layer: 0
-  m_Name: CoinPool
+  m_Name: XPPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39945,7 +40083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6197652592416761581, guid: 5f5c3998b02dcb84090c6489c15d3d58, type: 3}
-  initialSize: 10
+  initialSize: 20
 --- !u!4 &1802821915
 Transform:
   m_ObjectHideFlags: 0
@@ -39972,6 +40110,7 @@ GameObject:
   - component: {fileID: 1817495272}
   - component: {fileID: 1817495274}
   - component: {fileID: 1817495273}
+  - component: {fileID: 1817495275}
   m_Layer: 5
   m_Name: XPBar
   m_TagString: Untagged
@@ -40018,11 +40157,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8597667578742223717, guid: 8cf91edacabbe2c4b92fcb3291d19f47, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ee571467ab3d9a345845d4a7e6e5e500, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -40036,6 +40175,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817495271}
   m_CullTransparentMesh: 1
+--- !u!114 &1817495275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817495271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098e9b15fe7e6de47a7f0db50f6a4e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 1817495273}
 --- !u!1 &1821547318
 GameObject:
   m_ObjectHideFlags: 0
@@ -40171,7 +40323,7 @@ MonoBehaviour:
   spawnDistance: 20
   spawnRadiusVariation: 2
   enemyPool: {fileID: 408268103}
-  coinPool: {fileID: 1802821914}
+  expOrbPool: {fileID: 1802821914}
 --- !u!4 &1892528023
 Transform:
   m_ObjectHideFlags: 0
@@ -40536,3 +40688,6 @@ SceneRoots:
   - {fileID: 1033176496}
   - {fileID: 1011555906}
   - {fileID: 445742344}
+  - {fileID: 539126637}
+  - {fileID: 1630004769}
+  - {fileID: 919623755}

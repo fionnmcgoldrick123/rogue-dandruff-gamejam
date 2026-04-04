@@ -6,12 +6,12 @@ public class Enemy : MonoBehaviour, IHittable
     [Header("Enemy Settings")]
     public float moveSpeed = 2f;
     public float health = 3f;
-    [SerializeField] private int coinCount = 5;
+    [SerializeField] private int expOrbCount = 5;
 
     private float maxHealth;
     private Transform player;
     private ObjectPool enemyPool;
-    private ObjectPool coinPool;
+    private ObjectPool expOrbPool;
     private HitFlash hitFlash;
 
     private void Awake()
@@ -29,10 +29,10 @@ public class Enemy : MonoBehaviour, IHittable
         }
     }
 
-    public void Init(ObjectPool enemyPool, ObjectPool coinPool)
+    public void Init(ObjectPool enemyPool, ObjectPool expOrbPool)
     {
         this.enemyPool = enemyPool;
-        this.coinPool = coinPool;
+        this.expOrbPool = expOrbPool;
         health = maxHealth;
     }
 
@@ -70,16 +70,16 @@ public class Enemy : MonoBehaviour, IHittable
 
     private void Die(Vector2 hitDirection)
     {
-        SpawnCoins(hitDirection);
+        SpawnExpOrbs(hitDirection);
         enemyPool.Return(gameObject);
     }
 
-    private void SpawnCoins(Vector2 hitDirection)
+    private void SpawnExpOrbs(Vector2 hitDirection)
     {
-        for (int i = 0; i < coinCount; i++)
+        for (int i = 0; i < expOrbCount; i++)
         {
-            GameObject coinObj = coinPool.Get(transform.position, Quaternion.identity);
-            Coin coin = coinObj.GetComponent<Coin>();
+            GameObject orbObj = expOrbPool.Get(transform.position, Quaternion.identity);
+            ExpOrb orb = orbObj.GetComponent<ExpOrb>();
 
             Vector2 dir;
             if (hitDirection == Vector2.zero)
@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour, IHittable
                 dir = Quaternion.Euler(0, 0, spread) * (-hitDirection.normalized);
             }
 
-            coin.Launch(dir, coinPool);
+            orb.Launch(dir, expOrbPool);
         }
     }
 }

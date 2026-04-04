@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1437235450519140217}
   - component: {fileID: 7360304617327545841}
   m_Layer: 3
-  m_Name: Coin
+  m_Name: XP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197652592416761581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e82bf767d5ae74ba982ed3e13f3bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: a9562e8895348104a8dee3d17992e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 6
@@ -51,7 +51,7 @@ MonoBehaviour:
   magnetSpeed: 12
   pickupDistance: 0.3
   interactableCooldown: 0.5
-  value: 1
+  expValue: 1
 --- !u!212 &1437235450519140217
 SpriteRenderer:
   m_ObjectHideFlags: 0
