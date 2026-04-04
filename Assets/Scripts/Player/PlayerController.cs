@@ -31,6 +31,11 @@ public class TopDownMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameStateManager.Instance != null && GameStateManager.Instance.CurrentState == GameState.LevellingUp)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 

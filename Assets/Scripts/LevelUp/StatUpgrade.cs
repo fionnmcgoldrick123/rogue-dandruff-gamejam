@@ -11,6 +11,8 @@ public enum StatType
     BulletSpeed
 }
 
+public enum UpgradeRarity { Common, Uncommon, Rare, Epic, Legendary }
+
 [CreateAssetMenu(fileName = "StatUpgrade", menuName = "Rogue Dandruff/Stat Upgrade")]
 public class StatUpgrade : ScriptableObject
 {
@@ -19,4 +21,5 @@ public class StatUpgrade : ScriptableObject
     public StatType statType;
     public float upgradeAmount;
     public Sprite icon;
+    public UpgradeRarity rarity = UpgradeRarity.Common;
 }

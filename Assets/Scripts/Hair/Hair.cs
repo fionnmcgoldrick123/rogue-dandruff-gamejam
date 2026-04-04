@@ -33,19 +33,16 @@ public class Hair : MonoBehaviour, IHittable
 
     private void Cutting()
     {
-        Debug.Log("Cutting hair... Charge Time: " + chargeTime);
         chargeTime += Time.deltaTime;
 
         if (chargeTime >= cutTime)
         {
-            Debug.Log("Hair Cut!");
             chargeTime = 0f;
         }
     }
 
     private void NotCutting()
     {
-        Debug.Log("Not cutting hair... Charge Time: " + chargeTime);
         chargeTime -= Time.deltaTime;
         if (chargeTime < 0f)
             chargeTime = 0f;
@@ -53,7 +50,6 @@ public class Hair : MonoBehaviour, IHittable
 
     public void OnHit()
     {
-        // Trigger hit flash effect via IHittable (for non-bullet hits)
         if (hitFlash != null)
             hitFlash.OnHit();
     }
@@ -79,7 +75,6 @@ public class Hair : MonoBehaviour, IHittable
     {
         if (expOrbPool == null)
         {
-            Debug.LogWarning("ExpOrb pool not assigned to Hair!");
             return;
         }
 

@@ -38971,8 +38971,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 20:10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b91246b7a76211d45be9aa27ead570b0, type: 2}
-  m_sharedMaterial: {fileID: 7295616218079943950, guid: b91246b7a76211d45be9aa27ead570b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3c71305277a75fe40b138f6218334328, type: 2}
+  m_sharedMaterial: {fileID: 9119075295115874521, guid: 3c71305277a75fe40b138f6218334328, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -39080,8 +39080,12 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 914bbf281ab72f842872960cc487ed7d, type: 2}
   allUpgrades: []
   levelUpPanel: {fileID: 1817495271}
-  topUIPanel: {fileID: 0}
+  topUIPanel: {fileID: 76583774}
   cards: []
+  delayBetweenCards: 0.15
+  levelUpPopupPrefab: {fileID: 4080695981896928493, guid: 15540899162181948bbf67e77520a47d, type: 3}
+  player: {fileID: 310165578}
+  rootCanvas: {fileID: 351529138}
 --- !u!4 &919623755
 Transform:
   m_ObjectHideFlags: 0
@@ -39762,7 +39766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutTime: 5
   health: 100
-  expOrbCount: 5
+  expOrbCount: 100
   expOrbPool: {fileID: 1802821914}
 --- !u!61 &1455885252
 BoxCollider2D:
@@ -40157,7 +40161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee571467ab3d9a345845d4a7e6e5e500, type: 3}
+  m_Sprite: {fileID: -8597667578742223717, guid: 8cf91edacabbe2c4b92fcb3291d19f47, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

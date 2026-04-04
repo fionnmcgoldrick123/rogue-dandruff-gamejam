@@ -21,6 +21,8 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
+        if (GameStateManager.Instance != null && GameStateManager.Instance.CurrentState == GameState.LevellingUp)
+            return;
         AimGunAtMouse();
         HandleShootingInput();
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,14 @@ public class LevelUpUI : MonoBehaviour
 
     [Header("Cards")]
     [SerializeField] private UpgradeCardUI[] cards;
+    [SerializeField] private float delayBetweenCards = 0.2f;
+
+    [Header("Level Up Popup")]
+    [SerializeField] private GameObject levelUpPopupPrefab;
+    [SerializeField] private Transform player;
+    [SerializeField] private Canvas rootCanvas;
+
+    private Camera mainCamera;
 
     private void Awake()
     {
@@ -24,25 +33,52 @@ public class LevelUpUI : MonoBehaviour
             return;
         }
         Instance = this;
+        mainCamera = Camera.main;
     }
 
-    private void OnEnable()
+    private void Start()
+    {
+        if (levelUpPanel != null) levelUpPanel.SetActive(false);
+
+        // Subscribe here after all Awake calls have run
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.OnLevelUp += OnLevelUp;
+    }
+
+    private void OnDestroy()
     {
         if (LevelManager.Instance != null)
-            LevelManager.Instance.OnLevelUp += ShowLevelUpUI;
+            LevelManager.Instance.OnLevelUp -= OnLevelUp;
     }
 
-    private void OnDisable()
+    private void OnLevelUp()
     {
-        if (LevelManager.Instance != null)
-            LevelManager.Instance.OnLevelUp -= ShowLevelUpUI;
+        SpawnLevelUpPopup();
+        StartCoroutine(ShowLevelUpSequence());
     }
 
-    private void ShowLevelUpUI()
+    private void SpawnLevelUpPopup()
     {
+        if (levelUpPopupPrefab == null || player == null) return;
+
+        Transform canvasParent = rootCanvas != null ? rootCanvas.transform : transform;
+        GameObject popup = Instantiate(levelUpPopupPrefab, canvasParent);
+        LevelUpPopupText popupText = popup.GetComponent<LevelUpPopupText>();
+        if (popupText != null)
+            popupText.Init(player.position, mainCamera);
+    }
+
+    private IEnumerator ShowLevelUpSequence()
+    {
+        // Let popup play briefly before pausing
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Time.timeScale = 0f;
+        if (GameStateManager.Instance != null)
+            GameStateManager.Instance.EnterLevelUp();
+
         if (topUIPanel != null) topUIPanel.SetActive(false);
         if (levelUpPanel != null) levelUpPanel.SetActive(true);
-        Time.timeScale = 0f;
 
         StatUpgrade[] choices = GetRandomUpgrades(cards.Length);
         for (int i = 0; i < cards.Length; i++)
@@ -50,6 +86,10 @@ public class LevelUpUI : MonoBehaviour
             if (i < choices.Length)
                 cards[i].Setup(choices[i]);
         }
+
+        // Animate cards in one at a time
+        for (int i = 0; i < cards.Length; i++)
+            StartCoroutine(cards[i].AnimateIn(i * delayBetweenCards));
     }
 
     public void ApplyUpgrade(StatUpgrade upgrade)
@@ -72,10 +112,13 @@ public class LevelUpUI : MonoBehaviour
 
     private void HideLevelUpUI()
     {
-        if (topUIPanel != null) topUIPanel.SetActive(true);
-        if (levelUpPanel != null) levelUpPanel.SetActive(false);
-        Time.timeScale = 1f;
+        foreach (var card in cards)
+            card.gameObject.SetActive(false);
 
+        if (levelUpPanel != null) levelUpPanel.SetActive(false);
+        if (topUIPanel != null) topUIPanel.SetActive(true);
+
+        Time.timeScale = 1f;
         if (GameStateManager.Instance != null)
             GameStateManager.Instance.EnterCombat();
     }
