@@ -16,8 +16,8 @@ MonoBehaviour:
   moveSpeed: 5
   acceleration: 50
   deceleration: 50
-  damage: 1
-  fireRate: 0.1
+  damage: 100
+  fireRate: 0.01
   bulletSpeed: 15
   bulletLifespan: 3
   critChance: 0.1

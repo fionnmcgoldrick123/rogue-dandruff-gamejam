@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1
-  floatSpeed: 1.5
-  fadeDelay: 0.4
-  normalFontSize: 22
-  critFontSize: 26
+  floatSpeed: 2
+  fadeDelay: 0.2
+  normalFontSize: 30
+  critFontSize: 40
 --- !u!222 &4500008774638234111
 CanvasRenderer:
   m_ObjectHideFlags: 0

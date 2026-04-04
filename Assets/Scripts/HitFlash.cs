@@ -34,6 +34,10 @@ public class HitFlash : MonoBehaviour, IHittable
     /// </summary>
     public void OnHit()
     {
+        // Don't start coroutines if object is being deactivated
+        if (!gameObject.activeInHierarchy)
+            return;
+
         // Apply white material
         if (whiteMaterial != null)
         {
