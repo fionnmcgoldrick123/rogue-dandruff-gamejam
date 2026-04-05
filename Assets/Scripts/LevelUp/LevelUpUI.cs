@@ -25,6 +25,7 @@ public class LevelUpUI : MonoBehaviour
 
     private Camera mainCamera;
     private bool skipCardsAnimation = false;
+    private bool isAnimatingCards = false;
 
     private void Awake()
     {
@@ -54,8 +55,8 @@ public class LevelUpUI : MonoBehaviour
 
     private void Update()
     {
-        // Allow player to skip card animations by clicking or pressing any key
-        if (levelUpPanel != null && levelUpPanel.activeSelf && !skipCardsAnimation)
+        // Allow player to skip card animations ONLY while cards are animating
+        if (isAnimatingCards && !skipCardsAnimation)
         {
             if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
             {
@@ -101,6 +102,9 @@ public class LevelUpUI : MonoBehaviour
                 cards[i].Setup(choices[i]);
         }
 
+        // Start animating cards
+        isAnimatingCards = true;
+
         // Animate cards in one at a time
         for (int i = 0; i < cards.Length; i++)
         {
@@ -114,6 +118,9 @@ public class LevelUpUI : MonoBehaviour
             StartCoroutine(cards[i].AnimateIn(i * delayBetweenCards));
             yield return new WaitForSecondsRealtime(delayBetweenCards);
         }
+
+        // Animation complete - allow card selection
+        isAnimatingCards = false;
     }
 
     public void ApplyUpgrade(StatUpgrade upgrade)

@@ -24,11 +24,13 @@ public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private float hoverScale = 1.1f;
     [SerializeField] private float hoverDuration = 0.15f;
     [SerializeField] private Vector2 hoverOffset = new Vector2(0, 20f);
+    [SerializeField] private float interactableDelay = 1.0f;
 
     private StatUpgrade upgrade;
     private Vector3 originalPosition;
     private Vector3 originalScale;
     private Coroutine hoverCoroutine;
+    private bool isInteractable = false;
 
     public void Setup(StatUpgrade upgrade)
     {
@@ -44,10 +46,6 @@ public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (cardBackgroundImage != null)
             cardBackgroundImage.sprite = GetRarityBackground(upgrade.rarity);
 
-        // Store original position and scale for hover animation
-        originalScale = transform.localScale;
-        originalPosition = ((RectTransform)transform).anchoredPosition;
-
         gameObject.SetActive(false);
     }
 
@@ -55,6 +53,8 @@ public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         yield return new WaitForSecondsRealtime(delay);
         gameObject.SetActive(true);
+
+        isInteractable = false;
 
         transform.localScale = Vector3.zero;
         float t = 0f;
@@ -73,17 +73,23 @@ public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // Store final position for hover animation
         originalPosition = ((RectTransform)transform).anchoredPosition;
         originalScale = transform.localScale;
+
+        // Wait before allowing interaction
+        yield return new WaitForSecondsRealtime(interactableDelay);
+        isInteractable = true;
     }
 
     public void OnCardClicked()
     {
-        if (upgrade == null) return;
+        if (!isInteractable || upgrade == null) return;
         if (LevelUpUI.Instance != null)
             LevelUpUI.Instance.ApplyUpgrade(upgrade);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!isInteractable) return;
+        
         if (hoverCoroutine != null)
             StopCoroutine(hoverCoroutine);
         hoverCoroutine = StartCoroutine(AnimateHover(true));
@@ -91,6 +97,8 @@ public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!isInteractable) return;
+        
         if (hoverCoroutine != null)
             StopCoroutine(hoverCoroutine);
         hoverCoroutine = StartCoroutine(AnimateHover(false));

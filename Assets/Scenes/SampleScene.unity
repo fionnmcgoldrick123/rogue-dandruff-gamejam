@@ -577,7 +577,8 @@ MonoBehaviour:
   popInDuration: 0.25
   hoverScale: 1.1
   hoverDuration: 0.15
-  hoverOffset: {x: 0, y: 20}
+  hoverOffset: {x: 0, y: 8}
+  interactableDelay: 1.5
 --- !u!114 &199913410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39734,6 +39735,7 @@ MonoBehaviour:
   allUpgrades:
   - {fileID: 11400000, guid: 0eaa2281075737b458b22c0e8b989449, type: 2}
   - {fileID: 11400000, guid: 579cd85ef0de38f489af08d15fa08232, type: 2}
+  - {fileID: 11400000, guid: 553ed19c76796b045b4324da89403148, type: 2}
   levelUpPanel: {fileID: 767201336}
   topUIPanel: {fileID: 76583774}
   cards:
@@ -40343,7 +40345,8 @@ MonoBehaviour:
   popInDuration: 0.25
   hoverScale: 1.1
   hoverDuration: 0.15
-  hoverOffset: {x: 0, y: 20}
+  hoverOffset: {x: 0, y: 8}
+  interactableDelay: 1.5
 --- !u!114 &1076205436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40923,7 +40926,7 @@ GameObject:
   - component: {fileID: 1488282796}
   - component: {fileID: 1488282795}
   m_Layer: 5
-  m_Name: TestCard 1
+  m_Name: TestCard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41019,7 +41022,8 @@ MonoBehaviour:
   popInDuration: 0.25
   hoverScale: 1.1
   hoverDuration: 0.15
-  hoverOffset: {x: 0, y: 20}
+  hoverOffset: {x: 0, y: 8}
+  interactableDelay: 1.5
 --- !u!114 &1488282797
 MonoBehaviour:
   m_ObjectHideFlags: 0
