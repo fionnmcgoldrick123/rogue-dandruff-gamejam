@@ -24,6 +24,7 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Canvas rootCanvas;
 
     private Camera mainCamera;
+    private bool skipCardsAnimation = false;
 
     private void Awake()
     {
@@ -51,8 +52,21 @@ public class LevelUpUI : MonoBehaviour
             LevelManager.Instance.OnLevelUp -= OnLevelUp;
     }
 
+    private void Update()
+    {
+        // Allow player to skip card animations by clicking or pressing any key
+        if (levelUpPanel != null && levelUpPanel.activeSelf && !skipCardsAnimation)
+        {
+            if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
+            {
+                skipCardsAnimation = true;
+            }
+        }
+    }
+
     private void OnLevelUp()
     {
+        skipCardsAnimation = false;
         SpawnLevelUpPopup();
         StartCoroutine(ShowLevelUpSequence());
     }
@@ -89,7 +103,17 @@ public class LevelUpUI : MonoBehaviour
 
         // Animate cards in one at a time
         for (int i = 0; i < cards.Length; i++)
+        {
+            if (skipCardsAnimation)
+            {
+                // Show all remaining cards immediately
+                for (int j = i; j < cards.Length; j++)
+                    StartCoroutine(cards[j].AnimateIn(0f));
+                yield break;
+            }
             StartCoroutine(cards[i].AnimateIn(i * delayBetweenCards));
+            yield return new WaitForSecondsRealtime(delayBetweenCards);
+        }
     }
 
     public void ApplyUpgrade(StatUpgrade upgrade)

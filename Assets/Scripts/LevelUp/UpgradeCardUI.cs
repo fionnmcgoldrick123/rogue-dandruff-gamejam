@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class UpgradeCardUI : MonoBehaviour
+public class UpgradeCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
@@ -20,8 +21,14 @@ public class UpgradeCardUI : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private float popInDuration = 0.25f;
+    [SerializeField] private float hoverScale = 1.1f;
+    [SerializeField] private float hoverDuration = 0.15f;
+    [SerializeField] private Vector2 hoverOffset = new Vector2(0, 20f);
 
     private StatUpgrade upgrade;
+    private Vector3 originalPosition;
+    private Vector3 originalScale;
+    private Coroutine hoverCoroutine;
 
     public void Setup(StatUpgrade upgrade)
     {
@@ -36,6 +43,10 @@ public class UpgradeCardUI : MonoBehaviour
 
         if (cardBackgroundImage != null)
             cardBackgroundImage.sprite = GetRarityBackground(upgrade.rarity);
+
+        // Store original position and scale for hover animation
+        originalScale = transform.localScale;
+        originalPosition = ((RectTransform)transform).anchoredPosition;
 
         gameObject.SetActive(false);
     }
@@ -58,6 +69,10 @@ public class UpgradeCardUI : MonoBehaviour
             yield return null;
         }
         transform.localScale = Vector3.one;
+        
+        // Store final position for hover animation
+        originalPosition = ((RectTransform)transform).anchoredPosition;
+        originalScale = transform.localScale;
     }
 
     public void OnCardClicked()
@@ -65,6 +80,44 @@ public class UpgradeCardUI : MonoBehaviour
         if (upgrade == null) return;
         if (LevelUpUI.Instance != null)
             LevelUpUI.Instance.ApplyUpgrade(upgrade);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (hoverCoroutine != null)
+            StopCoroutine(hoverCoroutine);
+        hoverCoroutine = StartCoroutine(AnimateHover(true));
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (hoverCoroutine != null)
+            StopCoroutine(hoverCoroutine);
+        hoverCoroutine = StartCoroutine(AnimateHover(false));
+    }
+
+    private IEnumerator AnimateHover(bool isEntering)
+    {
+        float t = 0f;
+        Vector3 startScale = transform.localScale;
+        Vector3 startPos = ((RectTransform)transform).anchoredPosition;
+        
+        Vector3 targetScale = isEntering ? Vector3.one * hoverScale : originalScale;
+        Vector3 targetPos = isEntering ? startPos + (Vector3)hoverOffset : originalPosition;
+
+        while (t < hoverDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float progress = Mathf.Clamp01(t / hoverDuration);
+            progress = Mathf.SmoothStep(0f, 1f, progress);
+
+            transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
+            ((RectTransform)transform).anchoredPosition = Vector3.Lerp(startPos, targetPos, progress);
+            yield return null;
+        }
+
+        transform.localScale = targetScale;
+        ((RectTransform)transform).anchoredPosition = targetPos;
     }
 
     private Sprite GetRarityBackground(UpgradeRarity rarity)
