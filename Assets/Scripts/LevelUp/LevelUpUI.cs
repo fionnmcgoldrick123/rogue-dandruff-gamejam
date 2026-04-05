@@ -23,6 +23,9 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Canvas rootCanvas;
 
+    [Header("Select Transition")]
+    [SerializeField] private float resumeDelay = 1f;
+
     private Camera mainCamera;
     private bool skipCardsAnimation = false;
     private bool isAnimatingCards = false;
@@ -42,7 +45,6 @@ public class LevelUpUI : MonoBehaviour
     {
         if (levelUpPanel != null) levelUpPanel.SetActive(false);
 
-        // Subscribe here after all Awake calls have run
         if (LevelManager.Instance != null)
             LevelManager.Instance.OnLevelUp += OnLevelUp;
     }
@@ -55,13 +57,11 @@ public class LevelUpUI : MonoBehaviour
 
     private void Update()
     {
-        // Allow player to skip card animations ONLY while cards are animating
+        // Allow player to skip card animations ONLY while cards are animating in
         if (isAnimatingCards && !skipCardsAnimation)
         {
             if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
-            {
                 skipCardsAnimation = true;
-            }
         }
     }
 
@@ -85,7 +85,6 @@ public class LevelUpUI : MonoBehaviour
 
     private IEnumerator ShowLevelUpSequence()
     {
-        // Let popup play briefly before pausing
         yield return new WaitForSecondsRealtime(0.5f);
 
         Time.timeScale = 0f;
@@ -102,43 +101,78 @@ public class LevelUpUI : MonoBehaviour
                 cards[i].Setup(choices[i]);
         }
 
-        // Start animating cards
         isAnimatingCards = true;
 
-        // Animate cards in one at a time
         for (int i = 0; i < cards.Length; i++)
         {
             if (skipCardsAnimation)
             {
-                // Show all remaining cards immediately
                 for (int j = i; j < cards.Length; j++)
                     StartCoroutine(cards[j].AnimateIn(0f));
-                yield break;
+                break;
             }
             StartCoroutine(cards[i].AnimateIn(i * delayBetweenCards));
             yield return new WaitForSecondsRealtime(delayBetweenCards);
         }
 
-        // Animation complete - allow card selection
         isAnimatingCards = false;
     }
 
-    public void ApplyUpgrade(StatUpgrade upgrade)
+    // Called by UpgradeCardUI when a card is clicked
+    public void SelectUpgrade(StatUpgrade upgrade, UpgradeCardUI selectedCard)
+    {
+        // Lock all cards immediately to prevent double-clicks
+        foreach (var card in cards)
+            card.MakeNonInteractable();
+
+        isAnimatingCards = false;
+        StartCoroutine(SelectSequence(upgrade, selectedCard));
+    }
+
+    private IEnumerator SelectSequence(StatUpgrade upgrade, UpgradeCardUI selectedCard)
+    {
+        // Play select on picked card, dismiss the rest simultaneously
+        StartCoroutine(selectedCard.PlaySelectAnimation());
+        foreach (var card in cards)
+        {
+            if (card != selectedCard && card.gameObject.activeSelf)
+                StartCoroutine(card.PlayDismissAnimation());
+        }
+
+        yield return new WaitForSecondsRealtime(resumeDelay);
+
+        ApplyStatUpgrade(upgrade);
+        HideLevelUpUI();
+    }
+
+    private void ApplyStatUpgrade(StatUpgrade upgrade)
     {
         if (playerStats == null || upgrade == null) return;
 
         switch (upgrade.statType)
         {
-            case StatType.Damage:         playerStats.damage         += upgrade.upgradeAmount; break;
-            case StatType.FireRate:       playerStats.fireRate        = Mathf.Max(0.05f, playerStats.fireRate - upgrade.upgradeAmount); break;
-            case StatType.MoveSpeed:      playerStats.moveSpeed      += upgrade.upgradeAmount; break;
-            case StatType.MaxHealth:      playerStats.maxHealth      += upgrade.upgradeAmount; break;
-            case StatType.CritChance:     playerStats.critChance      = Mathf.Clamp01(playerStats.critChance + upgrade.upgradeAmount); break;
-            case StatType.CritMultiplier: playerStats.critMultiplier += upgrade.upgradeAmount; break;
-            case StatType.BulletSpeed:    playerStats.bulletSpeed    += upgrade.upgradeAmount; break;
+            case StatType.Damage:
+                playerStats.damage += upgrade.upgradeAmount;
+                break;
+            case StatType.FireRate:
+                playerStats.fireRate = Mathf.Max(0.05f, playerStats.fireRate - upgrade.upgradeAmount);
+                break;
+            case StatType.MoveSpeed:
+                playerStats.moveSpeed += upgrade.upgradeAmount;
+                break;
+            case StatType.MaxHealth:
+                playerStats.maxHealth += upgrade.upgradeAmount;
+                break;
+            case StatType.CritChance:
+                playerStats.critChance = Mathf.Clamp01(playerStats.critChance + upgrade.upgradeAmount);
+                break;
+            case StatType.CritMultiplier:
+                playerStats.critMultiplier += upgrade.upgradeAmount;
+                break;
+            case StatType.BulletSpeed:
+                playerStats.bulletSpeed += upgrade.upgradeAmount;
+                break;
         }
-
-        HideLevelUpUI();
     }
 
     private void HideLevelUpUI()

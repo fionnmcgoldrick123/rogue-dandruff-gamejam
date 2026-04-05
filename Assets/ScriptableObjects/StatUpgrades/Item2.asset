@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Item2
   description: This is item2
-  statType: 0
+  statType: 6
   upgradeAmount: 1
   icon: {fileID: 21300000, guid: 1d0e8a4f566ac574899858767beaa711, type: 3}
   rarity: 4

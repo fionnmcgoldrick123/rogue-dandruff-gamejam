@@ -46,22 +46,25 @@ public class TopDownMovement : MonoBehaviour
 
     void HandleMovement()
     {
+        // Read live from stats so upgrades take effect immediately
+        float speed = stats != null ? stats.moveSpeed : moveSpeed;
+        float accel = stats != null ? stats.acceleration : acceleration;
+        float decel = stats != null ? stats.deceleration : deceleration;
+
         if (moveInput != Vector2.zero)
         {
-            // Accelerate toward input direction
             currentVelocity = Vector2.MoveTowards(
                 currentVelocity,
-                moveInput * moveSpeed,
-                acceleration * Time.fixedDeltaTime
+                moveInput * speed,
+                accel * Time.fixedDeltaTime
             );
         }
         else
         {
-            // Decelerate to zero when no input
             currentVelocity = Vector2.MoveTowards(
                 currentVelocity,
                 Vector2.zero,
-                deceleration * Time.fixedDeltaTime
+                decel * Time.fixedDeltaTime
             );
         }
 
